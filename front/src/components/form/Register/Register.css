@@ -1,0 +1,79 @@
+.container-register{
+    top: 20%;
+    left: 15%;
+    position: absolute;
+    color: rgba(88, 170, 230, 0.73);
+    margin-top: -50px;
+  
+  }
+  .label-nombreR{
+    position: absolute;
+    margin-top: vh;  
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .input-nombreR{
+    width: 125%;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 2px solid #D6D1D5;
+    position: absolute;
+    margin-top: 5vh;
+  }
+  
+  .label-numeroR{
+    position: absolute;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 9vh;
+  }
+  .input-numeroR{
+    position: absolute;
+    width: 125%;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 2px solid #D6D1D5;
+    margin-top: 14vh;
+  }
+  
+  .label-emailR{
+    position: absolute;
+    margin-top: 18vh;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .input-emailR{
+    width: 125%;
+    position: absolute;
+    margin-top: 23vh;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 2px solid #D6D1D5;
+  }
+  
+  .label-passwordR{
+    position: absolute;
+    margin-top: 28vh;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .input-passwordR{
+    width: 125%;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 2px solid #D6D1D5;
+    position: absolute;
+    margin-top: 32vh;
+  }
