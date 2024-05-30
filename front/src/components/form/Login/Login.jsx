@@ -1,4 +1,5 @@
-import './Login.css'
+import './Login.css';
+import Logo from '../../../../public/klipartz.com.png'
 
 
 export default function Login() {
@@ -22,9 +23,9 @@ export default function Login() {
                 
                 <br/>
                 <h8 className='button-registar'>No tienes cuenta?</h8>
-                <a href='/Register'>Registrarse</a>
+                <a href='/Register' style={{textDecoration: 'none'}}>Registrarse</a>
             </form>
-          <img src="" alt="Logo" />
+            <img src={Logo} width={600} height={600} style={{position:'absolute', marginTop:'-220%', marginLeft:'220%'}} />
         </div>
     </>
   )
