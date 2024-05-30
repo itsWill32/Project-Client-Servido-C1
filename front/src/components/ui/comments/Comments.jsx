@@ -1,4 +1,4 @@
-import './Comentarios.css'
+import './Comments.css'
 
 function Comentarios({NombreUsuario, Opinion}) {
   return (

@@ -19,7 +19,11 @@ export default function Login() {
                     name='password' type="password" className='input-password' id="password"  placeholder="Password"  />
                 </div>
 
-                <button  className='button-IniciarSesion'  type="submit" >Iniciar sesion</button>
+                <button  className='button-IniciarSesion'  type="submit" >
+                    <a href="/Home">
+                        Iniciar sesion
+                    </a>
+                </button>
                 
                 <br/>
                 <h8 className='button-registar'>No tienes cuenta?</h8>

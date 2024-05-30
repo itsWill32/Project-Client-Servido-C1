@@ -1,3 +1,0 @@
-el archivo nodemon.json sirve para configurar correctamente nodemon
-
-el archivo tsconfig.json sirve para configurar correctamente TypeScript
