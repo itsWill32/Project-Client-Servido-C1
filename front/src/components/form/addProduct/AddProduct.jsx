@@ -26,7 +26,6 @@ export default function AddProduct() {
                 <input
                     type="url"
                     id="imageUrl"
-                    
                 />
             </div>
             <button type="submit">Agregar</button>
