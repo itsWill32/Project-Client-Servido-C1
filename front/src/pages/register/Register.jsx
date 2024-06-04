@@ -29,7 +29,7 @@ export default function Register() {
       });
       console.log(response.data);
       // Redirigir al usuario a la página de login
-      window.location.href = '/Login';
+      window.location.href = '/';
     } catch (error) {
       console.error('Error registrando el usuario:', error);
     }

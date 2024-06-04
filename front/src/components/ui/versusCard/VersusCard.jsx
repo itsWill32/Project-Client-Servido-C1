@@ -3,7 +3,7 @@ import './VersusCard.css';
 import Card from '../card/Card';
 import moment from 'moment';
 
-function VersusCard({ optionOneId, optionTwoId, expiration, optionOneVotes, optionTwoVotes, handleVote, votationId }) {
+function VersusCard({ votationId, optionOneId, optionTwoId, expiration, optionOneVotes, optionTwoVotes, handleVote }) {
   const [timeRemaining, setTimeRemaining] = useState('');
 
   useEffect(() => {
@@ -24,21 +24,16 @@ function VersusCard({ optionOneId, optionTwoId, expiration, optionOneVotes, opti
       <Card
         optionId={optionOneId}
         votesCant={optionOneVotes}
-        handleVote={handleVote}
-        votationId={votationId}
-        option={"optionOne"}
+        handleVote={() => handleVote(votationId, 'optionOne')} // Llama a handleVote con los argumentos correctos
       />
+      <div className="versus">
+        <p>Expira en: {timeRemaining}</p>
+      </div>
       <Card
         optionId={optionTwoId}
         votesCant={optionTwoVotes}
-        handleVote={handleVote}
-        votationId={votationId}
-        option={"optionTwo"}
+        handleVote={() => handleVote(votationId, 'optionTwo')} // Llama a handleVote con los argumentos correctos
       />
-
-      <div className='versus-card-expiration'>
-        <span>Expira en: {timeRemaining}</span>
-      </div>
     </div>
   );
 }

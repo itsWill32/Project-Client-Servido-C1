@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
-import VersusCard from "../../components/ui/versusCard/VersusCard";
 import Comentarios from '../../components/ui/comments/Comments';
+import ElectionsContainer from "../../components/ui/electionsContainer/ElectionsContainer";
 
 function Home() {
   const [elections, setElections] = useState([]);
@@ -73,6 +73,23 @@ function Home() {
     }
   };
 
+  const closeNotification = (notificationId) => async () => {
+  try {
+    const token = String(localStorage.getItem('token'));
+    const response = await axios.get(`http://localhost:3004/notifications/close/${notificationId}`, {
+      headers: {
+        Authorization: `${token}`
+      }
+    });
+
+    console.log("close notification data",response.data);
+    const data = response.data.notifications
+    setNotifications(data);
+  } catch (error) {
+    console.error("Error al cerrar la notificación", error);
+  }
+  };
+
   const handleGetVersus = async () => {
     try {
       const response = await axios.get("http://localhost:3004/elections");
@@ -117,9 +134,10 @@ function Home() {
         }
       });
 
-      const data = response.data;
-      console.log(data);
-      setNotifications(data.notifications);
+      console.log(response.data);
+
+      const data = response.data.notifications;
+      setNotifications(data);
     } catch (error) {
       console.error("Error al obtener las notificaciones", error);
     }
@@ -138,9 +156,9 @@ function Home() {
         }
       });
 
-      const data = response.data;
+      const data = response.data.notifications;
       console.log(data);
-      setNotifications(data.notifications);
+      setNotifications(data);
     } catch (error) {
       console.error("Error al obtener las notificaciones", error);
     }
@@ -164,7 +182,6 @@ function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
-
   return (
     <div className="contenedor-principal">
       <section className="header">
@@ -172,29 +189,19 @@ function Home() {
       </section>
       <section className="inicio-votacion">
         <div className="botones-inicio">
-          <div className="notification">
+          <section className="notifications">
             {notifications.map((notification, index) => (
-              <p key={index}>{notification.message}</p>
+              <div>
+                <p key={index}>{notification.text}</p>
+                <button className="notification-button" onClick={closeNotification(notification._id)}>Aceptar</button>
+              </div>
             ))}
-          </div>
+          </section>
         </div>
       </section>
-      <section className="votacion">
-        <div className="contenedor-votacion">
-          {elections.map(election => (
-            <VersusCard
-              key={election._id}
-              votationId={election._id}
-              optionOneId={election.optionOneId}
-              optionTwoId={election.optionTwoId}
-              expiration={election.expiration}
-              optionOneVotes={election.optionOneVotes}
-              optionTwoVotes={election.optionTwoVotes}
-              handleVote={handleVote}
-            />
-          ))}
-        </div>
-      </section>
+      
+      <ElectionsContainer elections={elections} handleVote={handleVote} />
+
       <section className="comentarios">
         <div className="contenedor-comentarios">
           <div className="Agregar-comentario">
