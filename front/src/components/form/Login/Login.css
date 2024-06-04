@@ -1,8 +1,8 @@
 .container-login{
     display: flex;
-    position: absolute;
-    align-items: center;
-    align-content: center;
+    /* position: absolute; */
+    /* align-items: center; */
+    /* align-content: center; */
     margin-top: 8%;
     width: 50%;
     height: 70%;
@@ -50,9 +50,9 @@
     background: none;
     border-bottom: 2px solid #D6D1D5;
   }
-  .button-IniciarSesion{
+  .button-IniciarSesion-login{
     width: 18vh;
-    height: 4vh;
+    height: 7vh;
     border-radius: 1.5625rem;
     background: rgba(88, 170, 230, 0.48);
     border: none;
@@ -62,4 +62,3 @@
   .button-registar{
     margin-left: 7vh;
   }
-  

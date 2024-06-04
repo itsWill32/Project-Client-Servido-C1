@@ -73,7 +73,7 @@
     display: flex;
     padding: 2%;
     flex-direction: column;
-
+    overflow-y: scroll;
   }
 
   .cards-arriba{

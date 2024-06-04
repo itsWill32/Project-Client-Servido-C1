@@ -4,7 +4,7 @@ import Login from './components/form/Login/Login';
 import Home from './pages/home/Home';
 import Register from "./pages/register/Register";
 import AddProduct from "./components/form/addProduct/AddProduct";
-
+import CreateElection from "./components/form/createElection/CreateElection";
 
 function App() {
 
@@ -15,6 +15,7 @@ function App() {
       <Route path="/Home" element={<Home/>} />
       <Route path="/Register" element={<Register/>} />
       <Route path="/AddProduct" element={<AddProduct/>} />
+      <Route path="/CreateElection" element={<CreateElection/>} />
     </Routes>
   </BrowserRouter>
   )
