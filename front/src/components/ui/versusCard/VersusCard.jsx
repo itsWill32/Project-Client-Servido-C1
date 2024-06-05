@@ -5,6 +5,7 @@ import moment from 'moment';
 
 function VersusCard({ votationId, optionOneId, optionTwoId, expiration, optionOneVotes, optionTwoVotes, handleVote }) {
   const [timeRemaining, setTimeRemaining] = useState('');
+  const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,18 +14,28 @@ function VersusCard({ votationId, optionOneId, optionTwoId, expiration, optionOn
       const duration = moment.duration(exp.diff(now));
       const minutes = Math.floor(duration.asMinutes());
       const seconds = Math.floor(duration.asSeconds() % 60);
-      setTimeRemaining(`${minutes} minutos ${seconds} segundos`);
+
+      if (duration.asSeconds() <= 0) {
+        setIsExpired(true);
+        clearInterval(interval);
+      } else {
+        setTimeRemaining(`${minutes} minutos ${seconds} segundos`);
+      }
     }, 1000);
 
     return () => clearInterval(interval);
   }, [expiration]);
+
+  if (isExpired) {
+    return null;
+  }
 
   return (
     <div className='versus-card'>
       <Card
         optionId={optionOneId}
         votesCant={optionOneVotes}
-        handleVote={() => handleVote(votationId, 'optionOne')} // Llama a handleVote con los argumentos correctos
+        handleVote={() => handleVote(votationId, 'optionOne')}
       />
       <div className="versus">
         <p>Expira en: {timeRemaining}</p>
@@ -32,7 +43,7 @@ function VersusCard({ votationId, optionOneId, optionTwoId, expiration, optionOn
       <Card
         optionId={optionTwoId}
         votesCant={optionTwoVotes}
-        handleVote={() => handleVote(votationId, 'optionTwo')} // Llama a handleVote con los argumentos correctos
+        handleVote={() => handleVote(votationId, 'optionTwo')}
       />
     </div>
   );
