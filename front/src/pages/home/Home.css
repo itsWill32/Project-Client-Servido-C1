@@ -18,7 +18,16 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+  }
+
+  .header a{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+    border: solid 2px aliceblue;
+    padding: 0.5em;
   }
   
   .header p {
@@ -91,6 +100,7 @@
     padding: 2%;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
   }
 
   .Agregar-comentario {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import axios from "axios";
 import Comentarios from '../../components/ui/comments/Comments';
@@ -6,6 +7,8 @@ import ElectionsContainer from "../../components/ui/electionsContainer/Elections
 
 function Home() {
   const [elections, setElections] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [textComment, setTextComment] = useState('');
   const [notifications, setNotifications] = useState([]);
   const [wsGlobal, setWsGlobal] = useState(null);
 
@@ -32,6 +35,12 @@ function Home() {
             election._id === updatedElection._id ? updatedElection : election
           )
         );
+      }
+
+      if (message.type === 'comment:comments_update') {
+        // Actualizar los comentarios en el estado
+        const newComment = message.comment;
+        setComments((prevComments) => [...prevComments, newComment]);
       }
     };
 
@@ -73,6 +82,28 @@ function Home() {
     }
   };
 
+  const handleAddComment = async () => {
+    try {
+      if (wsGlobal) {
+        const commentMessage = {
+          type: 'comment:add',
+          payload: {
+            text: textComment
+          }
+        };
+        wsGlobal.send(JSON.stringify(commentMessage));
+  
+        setComments((prevComments) => [...prevComments, {username: 'You', _doc: {text: textComment}}]);
+  
+        setTextComment('');
+      } else {
+        console.error("WebSocket no está conectado");
+      }
+    } catch (error) {
+      console.error("Error al comentar:", error);
+    }
+  }
+
   const closeNotification = (notificationId) => async () => {
   try {
     const token = String(localStorage.getItem('token'));
@@ -83,7 +114,7 @@ function Home() {
     });
 
     console.log("close notification data",response.data);
-    const data = response.data.notifications
+    const data = response.data.notifications;
     setNotifications(data);
   } catch (error) {
     console.error("Error al cerrar la notificación", error);
@@ -143,6 +174,16 @@ function Home() {
     }
   };
 
+  const getComments = async () => {
+    try {
+      const response = await axios.get('http://localhost:3004/comments');
+      const data = response.data.comments;
+      setComments(data);
+    } catch (error) {
+      console.error("Error al obtener los comentarios", error);
+    }
+  };
+
   const handleNotificationsShortPolling = async () => {
     try {
       const token = String(localStorage.getItem('token'));
@@ -157,7 +198,6 @@ function Home() {
       });
 
       const data = response.data.notifications;
-      console.log(data);
       setNotifications(data);
     } catch (error) {
       console.error("Error al obtener las notificaciones", error);
@@ -182,17 +222,27 @@ function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    getComments();
+  }, []);
+
   return (
     <div className="contenedor-principal">
       <section className="header">
+        <Link to='/AddProduct'>
+          Agregar Tenis
+        </Link>
         <p>SISTEMA DE VOTACION</p>
+        <Link onClick={() => window.location.href="/CreateElection"}>
+          Crear Votación
+        </Link>
       </section>
       <section className="inicio-votacion">
         <div className="botones-inicio">
           <section className="notifications">
             {notifications.map((notification, index) => (
-              <div>
-                <p key={index}>{notification.text}</p>
+              <div key={index}>
+                <p>{notification.text}</p>
                 <button className="notification-button" onClick={closeNotification(notification._id)}>Aceptar</button>
               </div>
             ))}
@@ -213,12 +263,15 @@ function Home() {
               className="comment-input"
               rows="4"
               placeholder="Escribe tu comentario aquí..."
+              value={textComment}
+              onChange={(event) => setTextComment(event.target.value)}
             ></textarea>
-            <button className="comment-button">Agregar comentario</button>
+            <button className="comment-button" onClick={handleAddComment} >Agregar comentario</button>
           </div>
-          <Comentarios NombreUsuario={''} Opinion={''} />
-          <Comentarios NombreUsuario={''} Opinion={''} />
-          <Comentarios NombreUsuario={''} Opinion={''} />
+          {comments.map((comment, index) => (
+            <Comentarios key={index} NombreUsuario={comment.username} Opinion={comment._doc.text} />
+            ))
+          }
         </div>
       </section>
     </div>
