@@ -1,7 +1,6 @@
 import './Login.css';
 import axios from 'axios';
 import { useState } from 'react';
-import Logo from '../../../../public/klipartz.com.png';
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -64,14 +63,14 @@ export default function Login() {
           </div>
 
           <button className='button-IniciarSesion-login' type="submit">
-            Iniciar sesión
+            <a >Iniciar sesión</a>
           </button>
 
           <br />
           <h8 className='button-registar'>No tienes cuenta?</h8>
           <a href='/Register' style={{ textDecoration: 'none' }}>Registrarse</a>
         </form>
-        <img src={Logo} width={600} height={600} style={{ position: 'absolute', marginTop: '-220%', marginLeft: '220%' }} />
+        {/* <img src={Logo} width={600} height={600} style={{ position: 'absolute', marginTop: '-220%', marginLeft: '220%' }} /> */}
       </div>
     </>
   )

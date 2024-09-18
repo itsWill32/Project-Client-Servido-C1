@@ -1,64 +1,59 @@
-.container-login{
-    display: flex;
-    /* position: absolute; */
-    /* align-items: center; */
-    /* align-content: center; */
-    margin-top: 8%;
-    width: 50%;
-    height: 70%;
-    margin-left: 15%;
-  }
-  .container-email{
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    color: rgba(88, 170, 230, 0.91);
-  
-  }
-  .label-email{
-    position: absolute;
-    margin-top: -5vh;  
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-  .input-email{
-    width: 150%;
-    border: none;
-    outline: none;
-    background: none;
-    border-bottom: 2px solid #D6D1D5;
-  }
-  
-  .container-password{
-    margin-bottom: 10vh;
-    color: rgba(88, 170, 230, 0.73);
-  
-  }
-  .label-password{
-    position: absolute;
-    margin-top: -5vh;
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
-  .input-password{
-    width: 150%;
-    border: none;
-    outline: none;
-    background: none;
-    border-bottom: 2px solid #D6D1D5;
-  }
-  .button-IniciarSesion-login{
-    width: 18vh;
-    height: 7vh;
-    border-radius: 1.5625rem;
-    background: rgba(88, 170, 230, 0.48);
-    border: none;
-    margin-left: 10vh;
-    margin-bottom: 3vh
-  }
-  .button-registar{
-    margin-left: 7vh;
-  }
+.container-login {
+  display: flex;
+  margin-top: 8%;
+  width: 50%;
+  height: 70%;
+  margin-left: 40%;
+}
+.container-email {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  color: rgba(88, 170, 230, 0.91);
+}
+.label-email {
+  position: absolute;
+  margin-top: -5vh;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.input-email {
+  width: 150%;
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 2px solid #d6d1d5;
+}
+
+.container-password {
+  margin-bottom: 10vh;
+  color: rgba(88, 170, 230, 0.73);
+}
+.label-password {
+  position: absolute;
+  margin-top: -5vh;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.input-password {
+  width: 150%;
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 2px solid #d6d1d5;
+}
+.button-IniciarSesion-login {
+  width: 18vh;
+  height: 7vh;
+  border-radius: 1.5625rem;
+  background: rgba(88, 170, 230, 0.48);
+  border: none;
+  margin-left: 10vh;
+  margin-bottom: 3vh;
+}
+.button-registar {
+  margin-left: 7vh;
+}

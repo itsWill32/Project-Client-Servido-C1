@@ -206,8 +206,11 @@ function Home() {
 
   // Long polling
   useEffect(() => {
-    handleGetVersus();
     handleLongPolling();
+  });
+
+  useEffect(() => {
+    handleGetVersus();
   }, []);
 
   // Short polling
@@ -218,7 +221,6 @@ function Home() {
       handleNotificationsShortPolling();
     }, 3000);
 
-    // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, []);
 

@@ -8,7 +8,6 @@
   }
   .label-nombreR{
     position: absolute;
-    margin-top: vh;  
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 500;
@@ -21,30 +20,13 @@
     background: none;
     border-bottom: 2px solid #D6D1D5;
     position: absolute;
-    margin-top: 5vh;
+    margin-top: 4vh;
   }
   
-  .label-numeroR{
-    position: absolute;
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin-top: 9vh;
-  }
-  .input-numeroR{
-    position: absolute;
-    width: 125%;
-    border: none;
-    outline: none;
-    background: none;
-    border-bottom: 2px solid #D6D1D5;
-    margin-top: 14vh;
-  }
   
   .label-emailR{
     position: absolute;
-    margin-top: 18vh;
+    margin-top: 11vh;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 500;
@@ -53,7 +35,7 @@
   .input-emailR{
     width: 125%;
     position: absolute;
-    margin-top: 23vh;
+    margin-top: 14vh;
     border: none;
     outline: none;
     background: none;
@@ -62,7 +44,7 @@
   
   .label-passwordR{
     position: absolute;
-    margin-top: 28vh;
+    margin-top: 23vh;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 500;
@@ -75,7 +57,7 @@
     background: none;
     border-bottom: 2px solid #D6D1D5;
     position: absolute;
-    margin-top: 32vh;
+    margin-top: 26vh;
   }
 
   .button-IniciarSesion{
